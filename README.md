@@ -13,36 +13,31 @@ This is a Python Twitch bot that responds to user requests in chat. To use this 
 6. Click the "New Secret" button to generate a new client secret. Copy the client secret and store it somewhere safe.
 7. In the `my_bot.py` file, replace the `TOKEN` variable with your Twitch API token (i.e. the client secret). 
 
-## Cooldown Feature
-
-This bot also includes a cooldown feature to prevent users from spamming certain commands. By default, the cooldown time for each command is set to 30 seconds.
-
-### Setting Cooldowns
-
-Only bot admins are able to set cooldowns for specific users. To add a new admin to the bot, simply add their username to the `BOT_ADMINS` list in the `my_bot.py` file.
-
-To set a cooldown for a specific user on a specific command, use the `set_cooldown` function in the `my_bot.py` file. For example:
-
-```python
-set_cooldown('!hello', 'user123', 60)
-```
-This sets a cooldown of 60 seconds for the user with the username "user123" on the "!hello" command.
-
-### Checking Cooldowns
-The get_cooldown function can be used to check the remaining cooldown time for a specific user on a specific command. For example:
-
-```python
-remaining_time = get_cooldown('!hello', 'user123')
-if remaining_time > 0:
-    print(f"{remaining_time} seconds remaining until the cooldown expires.")
-else:
-    print("The cooldown has expired.")
-This prints the remaining time (in seconds) until the cooldown for user "user123" on the "!hello" command expires.
-```
-### Note
-Please note that the cooldown feature only works if the bot is running continuously. If the bot is restarted or shut down, the cooldowns will be reset.
 
 ## Running the Bot
 * Install the required dependencies by running pip install -r requirements.txt in your terminal.
 * Run the bot by running python my_bot.py in your terminal.
 * Visit your Twitch channel and type !hello in the chat to test the bot. The bot should respond with "Hello, [your username]!".
+
+
+## Usage
+
+
+### Cooldown Feature
+
+This bot also includes a cooldown feature to prevent users from spamming certain commands. By default, the cooldown time for each command is set to 30 seconds.
+
+
+#### The bot has the following commands:
+```css
+!get_active_users: Returns a list of active users in the chat.
+
+!set_cooldown function_name:cooldown_time ...: Sets a cooldown time (in seconds) for a bot function. 
+The format for adding multiple functions and cooldown times is function_name:cooldown_time function_name2:cooldown_time2 ....                                  
+                                  
+!kiss: Sends a kiss to a random active user in the chat.
+```
+
+
+
+Note: the !kiss command has a cooldown time that can be set using !set_cooldown.
